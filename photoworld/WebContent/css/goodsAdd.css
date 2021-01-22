@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+.uploadImgPreView{
+	margin-left:12px;
+	
+}
+
+.goodsAddForm{
+	border: 1px solid #009688;
+	margin-left:10%;
+	margin-right:10%;
+	margin-top:40px;
+}

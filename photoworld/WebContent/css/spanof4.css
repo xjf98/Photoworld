@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+.span1_of_4:first-child{
+	margin-left: 0;
+}
+
+.span1_of_4{
+	margin-bottom: 50px;
+}
+
+.span1_of_4 p a:hover{
+	color: #00BAC6;
+}
+.span1_of_4 p.top{
+	border-top: 1px solid rgb(99, 99, 99);
+	margin-top: 20px;
+	padding-top: 10px;
+}
+.span1_of_4 p.btm{
+	margin-bottom: 8%;
+}
+.span1_of_4 p.btm1{
+	margin-bottom: 4%;
+}

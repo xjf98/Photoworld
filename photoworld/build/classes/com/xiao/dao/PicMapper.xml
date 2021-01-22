@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiao.dao.PicMapper">
+
+	<insert id="insertpic" parameterType="com.xiao.pojo.Photo">
+		insert into photo(pid,cid,uid,pname,p_address,p_time)
+		values(#{pid},#{cid},#{uid},#{pname},#{p_address},#{p_time})
+	</insert>
+
+    <select id="findNewPic" resultType="com.xiao.pojo.UserPhoto">
+        select a.pid,a.p_address,a.g_count,a.pname,b.uid,b.username,b.userphoto from photo a,user b where a.uid=b.uid ORDER BY p_time desc limit 9
+    </select>
+    
+     <select id="findNaturePic" resultType="com.xiao.pojo.UserPhoto">
+        select a.pid,a.p_address,a.g_count,a.pname,b.username,b.userphoto from photo a,user b where a.uid=b.uid and cid = 1 
+    </select>
+    
+    <select id="findArtPic" resultType="com.xiao.pojo.UserPhoto">
+        select a.pid,a.p_address,a.g_count,a.pname,b.username,b.userphoto from photo a,user b where a.uid=b.uid and cid = 2 
+    </select>
+    
+     <select id="findCityPic" resultType="com.xiao.pojo.UserPhoto">
+        select a.pid,a.p_address,a.g_count,a.pname,b.username,b.userphoto from photo a,user b where a.uid=b.uid and cid = 3 
+    </select>
+    
+    <select id="findTourismPic" resultType="com.xiao.pojo.UserPhoto">
+        select a.pid,a.p_address,a.g_count,a.pname,b.username,b.userphoto from photo a,user b where a.uid=b.uid and cid = 4 
+    </select>
+    
+    <select id="findFoodPic" resultType="com.xiao.pojo.UserPhoto">
+        select a.pid,a.p_address,a.g_count,a.pname,b.username,b.userphoto from photo a,user b where a.uid=b.uid and cid = 5 
+    </select>
+    
+    <update id="addCount" parameterType="string">
+     UPDATE photo SET g_count=g_count+1 WHERE pid= #{pid}
+    </update>
+    
+    <select id="selectCount" parameterType="string" resultType="Integer">
+     select g_count from photo where pid=#{pid}
+    </select>
+    
+    <select id="selectPic" parameterType="string" resultType="com.xiao.pojo.UserPhoto" >
+     SELECT username,userphoto,b.pid,b.p_address,b.pname,b.pdesc,b.p_time,b.g_count,b.c_count FROM user a,photo b where pid=#{pid} and a.uid=b.uid 
+    </select>
+    
+    <select id="findPicByUid" parameterType="string" resultType="com.xiao.pojo.Photo">
+     select * from photo where uid = #{uid}
+    </select>
+    
+    <update id="updatePic" parameterType="string">
+     update photo set cid=null,uid=null where pid=#{pid}
+    </update>
+    
+    <delete id="deletePic" parameterType="string" >
+     delete from photo where pid=#{pid}
+    </delete>
+</mapper>

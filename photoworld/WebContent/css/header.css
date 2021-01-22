@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+.logo{
+	margin-top:0.7%;
+	float:left;
+	margin-left:3%;
+	width: 15%;
+}
+.logo img{
+	
+	width:200px;
+}
+
+.header1{
+	padding:0;
+}
+
+.social-icons {
+	float:right;
+}
+.social-icons li:first-child{
+	margin-left: 20px;
+}
+.social-icons li{
+	float:left;
+	margin-left:20px;
+}
+
+.imgpai{
+	margin-left: 1%;
+	
+}
+.imgban{
+	float:left;
+	margin-left: 2%;
+}
+.imgban p{
+	font-size:25px;
+	margin-top:3%;
+	text-align: center;
+}
+.imgpai img{
+	
+	margin-left:3%;
+	margin-top:1%;
+    width:160px;
+    height:160px;
+	border-radius:50%;
+	
+}

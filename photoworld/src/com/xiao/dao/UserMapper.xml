@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiao.dao.UserMapper">
+
+ <insert id="addUserByUnAndPs" parameterType="com.xiao.pojo.User">
+   insert into user(username,password,userphoto) values(#{username},#{password},#{userphoto})
+ </insert>
+ 
+ <select id="checkUserAndLogin" parameterType="com.xiao.pojo.User" resultType="com.xiao.pojo.User">
+  select * from user where username = #{username} and password = #{password}
+ </select>
+ 
+ <select id="checkUsername" parameterType="string" resultType="com.xiao.pojo.User">
+  select * from user where username = #{username}
+ </select>
+ 
+ <update id="updateUser" parameterType="com.xiao.pojo.User">
+  update user set username=#{username},sex=#{sex},phone=#{phone},email=#{email},tag=#{tag},userphoto=#{userphoto} where uid=#{uid}
+ </update>
+ <update id="updateUsernameandtag" parameterType="com.xiao.pojo.User">
+  update user set username=#{username},tag=#{tag} where uid=#{uid}
+ </update>
+ <select id="findUserByUid" parameterType="int" resultType="com.xiao.pojo.User">
+  select * from user where uid=#{uid}
+ </select>
+ 
+ <select id="findHotUsers" resultType="com.xiao.pojo.User">
+   select uid,userphoto from user order by fans desc limit 6;
+ </select>
+</mapper>

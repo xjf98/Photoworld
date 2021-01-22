@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiao.dao.CommentMapper">
+ 
+  <insert id="addComment" parameterType="com.xiao.pojo.Comment">
+   insert into comment(comment_id,pid,uid,c_time,content) values(#{comment_id},#{pid},#{uid},#{c_time},#{content})
+  </insert>
+  
+  <select id="findAllCommentByPid" parameterType="string" resultType="com.xiao.pojo.UserComment">
+   select a.comment_id,a.c_time,a.content,b.username,b.userphoto from comment a,user b where a.uid=b.uid and pid=#{pid}
+  </select>
+  
+  <select id="findAllReplyByComment_id" parameterType="string" resultType="com.xiao.pojo.UserReply">
+   select a.r_time,a.rid,a.r_content,b.uid,b.username,b.userphoto from reply a,user b where a.uid=b.uid and comment_id=#{comment_id}
+  </select>
+</mapper>
